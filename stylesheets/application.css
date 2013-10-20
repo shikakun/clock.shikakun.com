@@ -39,4 +39,5 @@ body {
 #time {
   font-size: 256px;
   letter-spacing: -20px;
+  cursor: pointer;
 }
