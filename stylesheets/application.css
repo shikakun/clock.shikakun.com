@@ -1,5 +1,5 @@
 @charset "UTF-8";
-@import url("http://fonts.googleapis.com/css?family=Open+Sans:400,700");
+@import url("//fonts.googleapis.com/css?family=Share+Tech+Mono");
 
 html,body,div,h1,h2,h3,h4,h5,h6,p,blockquote,q,pre,table,caption,colgroup,col,tbody,thead,tfoot,tr,th,td,ul,ol,li,dl,dt,dd,form,fieldset,legend,label,span,a,img,em,ins,del,cite,abbr,sup,sub,dfn,code,var,samp,kbd,object,script,noscript,style,iframe,embed,param,map,area,menu,hr,address,small,strong,i,b,article,aside,figure,footer,header,hgroup,nav,section,figcaption,time,video,audio,mark,ruby,rt,rp,bdo,source,canvas,details,summary,command,datalist,keygen,output,progress,meter { margin: 0; padding: 0; font-size: 100%; }
 address,article,aside,figure,figcaption,footer,header,hgroup,hr,legend,menu,nav,section,summary { display: block; }
@@ -13,13 +13,30 @@ object,object:focus { outline:none; }
 .clearfix { zoom: 1; }
 .clearfix:after { content: ""; display: block; clear: both; }
 
+html,
+body,
+#view {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height:100%;
+}
+
 body {
+  display: table;
   color: #000;
-  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  font-family: 'Share Tech Mono', sans-serif;
   font-size: 14px;
   line-height: 1.5;
 }
 
-a {
-  color: #0099fa;
+#view {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+
+#time {
+  font-size: 256px;
+  letter-spacing: -20px;
 }
