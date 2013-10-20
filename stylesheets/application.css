@@ -45,6 +45,10 @@ body {
   background-color: #000;
 }
 
+#view.remaining.over {
+  background-color: #ff0000;
+}
+
 #time {
   font-size: 256px;
   letter-spacing: -20px;

@@ -45,6 +45,11 @@ function getRemainingTime() {
   }
   $('html').attr('data-status-remaining', '1');
   date = $('html').attr('data-remaining-time-sec');
+  if (date <= 0) {
+    clearInterval(remaining);
+    $('html').attr('data-status-remaining', '0');
+    $('#view').addClass('over');
+  }
   secRaw = date % 60;
   sec = makeNumSameLength(secRaw, 2);
   minRaw = (date - secRaw) / 60;
