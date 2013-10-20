@@ -36,17 +36,17 @@ body {
 }
 
 #view.current {
-  color: #000;
+  color: #039e41;
   background-color: #fff;
 }
 
 #view.remaining {
   color: #fff;
-  background-color: #000;
+  background-color: #039e41;
 }
 
 #view.remaining.over {
-  background-color: #ff0000;
+  background-color: #db0000;
 }
 
 #time {
