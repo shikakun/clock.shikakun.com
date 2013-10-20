@@ -11,6 +11,7 @@ $(function() {
 
 function switchMode() {
   var mode = $('html').attr('data-mode');
+  $('#view').attr('class', mode);
   if (mode == 'current') {
     getCurrentTime();
     current = setInterval("getCurrentTime()", 500);

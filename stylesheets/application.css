@@ -19,21 +19,30 @@ body,
   padding: 0;
   margin: 0;
   width: 100%;
-  height:100%;
+  height: 100%;
 }
 
 body {
   display: table;
-  color: #000;
   font-family: 'Share Tech Mono', sans-serif;
   font-size: 14px;
-  line-height: 1.5;
+  line-height: 1;
 }
 
 #view {
   display: table-cell;
   vertical-align: middle;
   text-align: center;
+}
+
+#view.current {
+  color: #000;
+  background-color: #fff;
+}
+
+#view.remaining {
+  color: #fff;
+  background-color: #000;
 }
 
 #time {
