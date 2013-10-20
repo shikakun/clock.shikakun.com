@@ -2,7 +2,7 @@ $(function() {
   $('html').attr('data-mode', 'current');
   switchMode();
 
-  var current, remaining, date, hour, min, sec, minRaw, secRaw;
+  var current, remaining, date, hour, min, sec, time, minRaw, secRaw;
 
   $('#time').click(function () {
     switchMode();
@@ -35,7 +35,9 @@ function getCurrentTime() {
   hour = makeNumSameLength(date.getHours(), 2);
   min = makeNumSameLength(date.getMinutes(), 2);
   sec = makeNumSameLength(date.getSeconds(), 2);
-  $('#time').html(hour + ':' + min + ':' + sec);
+  time = hour + ':' + min + ':' + sec;
+  $('#time').html(time);
+  document.title = time;
 }
 
 function getRemainingTime() {
@@ -54,7 +56,9 @@ function getRemainingTime() {
   sec = makeNumSameLength(secRaw, 2);
   minRaw = (date - secRaw) / 60;
   min = makeNumSameLength(minRaw, 2);
-  $('#time').html(min + ':' + sec);
+  time = min + ':' + sec;
+  $('#time').html(time);
+  document.title = time;
   date = date - 1;
   $('html').attr('data-remaining-time-sec', date);
 }
