@@ -35,17 +35,17 @@ body {
   text-align: center;
 }
 
-#view.current {
+#view.off {
   color: #039e41;
   background-color: #fff;
 }
 
-#view.remaining {
+#view.on {
   color: #fff;
   background-color: #039e41;
 }
 
-#view.remaining.over {
+#view.on.over {
   background-color: #db0000;
 }
 

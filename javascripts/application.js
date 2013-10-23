@@ -1,69 +1,45 @@
 $(function() {
-  $('html').attr('data-mode', 'current');
-  switchMode();
-
-  var current, remaining, date, hour, min, sec, time, minRaw, secRaw;
+  var current, min, sec, time, timerInterval;
+  $('#view').attr('class', 'off');
+  $('#time').html('15:00');
 
   $('#time').click(function () {
-    switchMode();
+    touch();
   });
 });
 
-function switchMode() {
-  var mode = $('html').attr('data-mode');
-  $('#view').attr('class', mode);
-  if (mode == 'current') {
-    getCurrentTime();
-    current = setInterval("getCurrentTime()", 500);
-    mode = 'remaining';
-  } else if (mode == 'remaining') {
-    $('html').attr('data-remaining-time-sec', '900');
-    getRemainingTime();
-    remaining = setInterval("getRemainingTime()", 1000);
-    mode = 'current';
+function touch() {
+  var status = $('html').attr('data-timer-status');
+  if (status == 'on') {
+    status = 'off';
+    clearInterval(timerInterval);
+    $('#time').html('15:00');
+  } else {
+    status = 'on';
+    $('html').attr('data-timer-time-sec', '900');
+    timer();
+    timerInterval = setInterval("timer()", 1000);
   }
-  $('html').attr('data-mode', mode);
+  $('html').attr('data-timer-status', status);
+  $('#view').attr('class', status);
 }
 
-function getCurrentTime() {
-  if ($('html').attr('data-status-remaining') > 0) {
-    clearInterval(remaining);
-    $('html').attr('data-status-remaining', '0');
-  }
-  $('html').attr('data-status-current', '1');
-  date = new Date();
-  hour = makeNumSameLength(date.getHours(), 2);
-  min = makeNumSameLength(date.getMinutes(), 2);
-  sec = makeNumSameLength(date.getSeconds(), 2);
-  time = hour + ':' + min + ':' + sec;
-  $('#time').html(time);
-  document.title = time;
-}
-
-function getRemainingTime() {
-  if ($('html').attr('data-status-current') > 0) {
-    clearInterval(current);
-    $('html').attr('data-status-current', '0');
-  }
-  $('html').attr('data-status-remaining', '1');
-  date = $('html').attr('data-remaining-time-sec');
-  if (date <= 0) {
-    clearInterval(remaining);
-    $('html').attr('data-status-remaining', '0');
+function timer() {
+  current = $('html').attr('data-timer-time-sec');
+  if (current <= 0) {
+    clearInterval(timerInterval);
     $('#view').addClass('over');
   }
-  secRaw = date % 60;
-  sec = makeNumSameLength(secRaw, 2);
-  minRaw = (date - secRaw) / 60;
-  min = makeNumSameLength(minRaw, 2);
-  time = min + ':' + sec;
+  sec = current % 60;
+  min = (current - sec) / 60;
+  time = keepLength(min, 2) + ':' + keepLength(sec, 2);
   $('#time').html(time);
   document.title = time;
-  date = date - 1;
-  $('html').attr('data-remaining-time-sec', date);
+  current = current - 1;
+  $('html').attr('data-timer-time-sec', current);
 }
 
-function makeNumSameLength(num, figures) {
+function keepLength(num, figures) {
   var num = String(num);
   while (num.length < figures) {
     num = '0' + num;
