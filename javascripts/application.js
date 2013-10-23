@@ -1,5 +1,5 @@
 $(function() {
-  var current, min, sec, time, timerInterval;
+  var timerInterval;
   $('#view').attr('class', 'off');
   print('15:00');
 
@@ -25,22 +25,27 @@ function touch() {
 }
 
 function timer() {
-  current = $('html').attr('data-timer-time-sec');
+  var current = $('html').attr('data-timer-time-sec');
   if (current <= 0) {
     clearInterval(timerInterval);
     $('#view').addClass('over');
   }
-  sec = current % 60;
-  min = (current - sec) / 60;
-  time = keepLength(min, 2) + ':' + keepLength(sec, 2);
+  var time = timeFormat(current);
   print(time);
-  current = current - 1;
+  current--;
   $('html').attr('data-timer-time-sec', current);
 }
 
 function print(time) {
   $('#time').html(time);
   document.title = time;
+}
+
+function timeFormat(sec) {
+  var s = sec % 60;
+  var m = (sec - s) / 60;
+  var time = keepLength(m, 2) + ':' + keepLength(s, 2);
+  return time;
 }
 
 function keepLength(num, figures) {
