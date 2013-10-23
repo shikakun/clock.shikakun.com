@@ -1,7 +1,7 @@
 $(function() {
   var timerInterval;
   $('#view').attr('class', 'off');
-  print('15:00');
+  print(900);
 
   $('#time').click(function () {
     touch();
@@ -13,7 +13,7 @@ function touch() {
   if (status == 'on') {
     status = 'off';
     clearInterval(timerInterval);
-    print('15:00');
+    print(900);
   } else {
     status = 'on';
     $('html').attr('data-timer-time-sec', '900');
@@ -30,22 +30,17 @@ function timer() {
     clearInterval(timerInterval);
     $('#view').addClass('over');
   }
-  var time = timeFormat(current);
-  print(time);
+  print(current);
   current--;
   $('html').attr('data-timer-time-sec', current);
 }
 
-function print(time) {
-  $('#time').html(time);
-  document.title = time;
-}
-
-function timeFormat(sec) {
+function print(sec) {
   var s = sec % 60;
   var m = (sec - s) / 60;
   var time = keepLength(m, 2) + ':' + keepLength(s, 2);
-  return time;
+  $('#time').html(time);
+  document.title = time;
 }
 
 function keepLength(num, figures) {
