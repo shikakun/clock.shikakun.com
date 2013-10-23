@@ -1,5 +1,5 @@
 $(function() {
-  var timerInterval;
+  var current, timerInterval;
   $('#view').attr('class', 'off');
   print(900);
 
@@ -16,7 +16,7 @@ function touch() {
     print(900);
   } else {
     status = 'on';
-    $('html').attr('data-timer-time-sec', '900');
+    current = 900;
     timer();
     timerInterval = setInterval("timer()", 1000);
   }
@@ -25,14 +25,12 @@ function touch() {
 }
 
 function timer() {
-  var current = $('html').attr('data-timer-time-sec');
   if (current <= 0) {
     clearInterval(timerInterval);
     $('#view').addClass('over');
   }
   print(current);
   current--;
-  $('html').attr('data-timer-time-sec', current);
 }
 
 function print(sec) {
