@@ -13,7 +13,7 @@ function touch() {
   if (status == 'on') {
     status = 'off';
     clearInterval(timerInterval);
-    $('#time').html('15:00');
+    print('15:00');
   } else {
     status = 'on';
     $('html').attr('data-timer-time-sec', '900');
