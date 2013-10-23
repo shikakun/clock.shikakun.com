@@ -1,7 +1,7 @@
 $(function() {
   var current, min, sec, time, timerInterval;
   $('#view').attr('class', 'off');
-  $('#time').html('15:00');
+  print('15:00');
 
   $('#time').click(function () {
     touch();
@@ -33,10 +33,14 @@ function timer() {
   sec = current % 60;
   min = (current - sec) / 60;
   time = keepLength(min, 2) + ':' + keepLength(sec, 2);
-  $('#time').html(time);
-  document.title = time;
+  print(time);
   current = current - 1;
   $('html').attr('data-timer-time-sec', current);
+}
+
+function print(time) {
+  $('#time').html(time);
+  document.title = time;
 }
 
 function keepLength(num, figures) {
