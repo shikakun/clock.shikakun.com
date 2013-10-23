@@ -1,6 +1,6 @@
 $(function() {
-  var current, timerInterval;
-  $('#view').attr('class', 'off');
+  var current, status, timerInterval;
+  setStatus('off');
   print(900);
 
   $('#time').click(function () {
@@ -9,19 +9,16 @@ $(function() {
 });
 
 function touch() {
-  var status = $('html').attr('data-timer-status');
   if (status == 'on') {
-    status = 'off';
+    setStatus('off');
     clearInterval(timerInterval);
     print(900);
   } else {
-    status = 'on';
+    setStatus('on');
     current = 900;
     timer();
     timerInterval = setInterval("timer()", 1000);
   }
-  $('html').attr('data-timer-status', status);
-  $('#view').attr('class', status);
 }
 
 function timer() {
@@ -31,7 +28,7 @@ function timer() {
   }
   print(current);
   current--;
-}
+} 
 
 function print(sec) {
   var s = sec % 60;
@@ -39,6 +36,11 @@ function print(sec) {
   var time = keepLength(m, 2) + ':' + keepLength(s, 2);
   $('#time').html(time);
   document.title = time;
+}
+
+function setStatus(param) {
+  status = param;
+  $('#view').attr('class', param);
 }
 
 function keepLength(num, figures) {
