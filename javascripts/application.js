@@ -9,7 +9,7 @@ $(function() {
 });
 
 function touch() {
-  if (status == 'on') {
+  if (status === 'on') {
     setStatus('off');
     clearInterval(timerInterval);
     print(900);
