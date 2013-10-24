@@ -1,7 +1,22 @@
+var current, status, timerInterval, countSec = 900;
+
+var urlQueryParam = function(name) {
+  var vars = {};
+  var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+  for (var i = 0; i < hashes.length; i++) {
+    hash = hashes[i].split('=');
+    vars[hash[0]] = hash[1];
+  }
+  return vars[name];
+};
+
+if (!isNaN(urlQueryParam('sec'))) {
+  countSec = urlQueryParam('sec');
+}
+
 $(function() {
-  var current, status, timerInterval;
   setStatus('off');
-  print(900);
+  print(countSec);
 
   $('#time').click(function () {
     touch();
@@ -12,10 +27,10 @@ function touch() {
   if (status === 'on') {
     setStatus('off');
     clearInterval(timerInterval);
-    print(900);
+    print(countSec);
   } else {
     setStatus('on');
-    current = 900;
+    current = countSec;
     timer();
     timerInterval = setInterval("timer()", 1000);
   }
