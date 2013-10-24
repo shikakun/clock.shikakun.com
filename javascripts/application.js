@@ -17,7 +17,22 @@ function switchMode() {
     current = setInterval("getCurrentTime()", 500);
     mode = 'remaining';
   } else if (mode == 'remaining') {
-    $('html').attr('data-remaining-time-sec', '900');
+    var countSec = 900;
+    var urlQueryParam = function(name) {
+      var vars = {};
+      var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+      for (var i = 0; i < hashes.length; i++) {
+        hash = hashes[i].split('=');
+        vars[hash[0]] = hash[1];
+      }
+      return vars[name];
+    };
+
+    if (!isNaN(urlQueryParam('sec'))) {
+      countSec = urlQueryParam('sec');
+    }
+
+    $('html').attr('data-remaining-time-sec', countSec);
     getRemainingTime();
     remaining = setInterval("getRemainingTime()", 1000);
     mode = 'current';
