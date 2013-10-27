@@ -1,4 +1,4 @@
-var current, status, timerInterval, countSec = 900;
+var status, timerInterval, currentSec, countSec = 900;
 
 var urlQueryParam = function(name) {
   var vars = {};
@@ -30,19 +30,19 @@ function touch() {
     print(countSec);
   } else {
     setStatus('on');
-    current = countSec;
+    currentSec = countSec;
     timer();
     timerInterval = setInterval("timer()", 1000);
   }
 }
 
 function timer() {
-  if (current <= 0) {
+  if (currentSec <= 0) {
     clearInterval(timerInterval);
     $('#view').addClass('over');
   }
-  print(current);
-  current--;
+  print(currentSec);
+  currentSec--;
 } 
 
 function print(sec) {
