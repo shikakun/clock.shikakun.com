@@ -1,4 +1,4 @@
-var status, timerInterval, currentSec, countSec = 900;
+var status, timerInterval, currentProgress, currentSec, countSec = 900;
 
 var urlQueryParam = function(name) {
   var vars = {};
@@ -40,6 +40,9 @@ function timer() {
   if (currentSec <= 0) {
     clearInterval(timerInterval);
     $('#view').addClass('over');
+  } else {
+    currentProgress = Math.round((1 - currentSec / countSec) * 100);
+    $('#view').css('background-size', currentProgress + '% 100%');
   }
   print(currentSec);
   currentSec--;
