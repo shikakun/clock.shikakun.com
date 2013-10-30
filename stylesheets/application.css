@@ -58,4 +58,5 @@ body {
   font-size: 256px;
   letter-spacing: -20px;
   cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
