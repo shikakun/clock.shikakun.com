@@ -18,6 +18,16 @@ $(function() {
   setStatus('off');
   print(countSec);
 
+  $('#button-minus').click(function () {
+    countSec = countSec - 300;
+    print(countSec);
+  });
+
+  $('#button-plus').click(function () {
+    countSec = countSec + 300;
+    print(countSec);
+  });
+
   $('#time').click(function () {
     touch();
   });
@@ -26,10 +36,12 @@ $(function() {
 function touch() {
   if (status === 'on') {
     setStatus('off');
+    $('.button').show();
     clearInterval(timerInterval);
     print(countSec);
   } else {
     setStatus('on');
+    $('.button').hide();
     currentSec = countSec;
     timer();
     timerInterval = setInterval("timer()", 1000);
@@ -46,7 +58,7 @@ function timer() {
   }
   print(currentSec);
   currentSec--;
-} 
+}
 
 function print(sec) {
   var s = sec % 60;
