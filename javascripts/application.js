@@ -1,4 +1,4 @@
-var status, timerInterval, currentProgress, currentSec, countSec = 900;
+var status, timerInterval, currentProgress, currentSec, countSec = 180;
 
 var urlQueryParam = function(name) {
   var vars = {};
@@ -19,12 +19,12 @@ $(function() {
   print(countSec);
 
   $('#button-minus').click(function () {
-    countSec = countSec - 300;
+    countSec = countSec - 60;
     print(countSec);
   });
 
   $('#button-plus').click(function () {
-    countSec = countSec + 300;
+    countSec = countSec + 60;
     print(countSec);
   });
 
