@@ -19,12 +19,12 @@ $(function() {
   print(countSec);
 
   $('#button-minus').click(function () {
-    countSec = countSec - 300;
+    countSec = countSec - 60;
     print(countSec);
   });
 
   $('#button-plus').click(function () {
-    countSec = countSec + 300;
+    countSec = countSec + 60;
     print(countSec);
   });
 
