@@ -1,4 +1,4 @@
-var status, timerInterval, currentProgress, currentSec, countSec = 900;
+var status, timerInterval, currentProgress, currentSec, countSec = 180;
 
 var urlQueryParam = function(name) {
   var vars = {};
