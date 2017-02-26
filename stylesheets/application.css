@@ -33,7 +33,7 @@ body {
   display: table-cell;
   vertical-align: middle;
   text-align: center;
-  background-image: url(/images/orange.png);
+  background-image: url(../images/orange.png);
   background-repeat: no-repeat;
   background-size: 0 100%;
 }
@@ -85,11 +85,10 @@ body {
 
 #button-minus {
   float: left;
-  background-image: url(/images/button-minus.png);
+  background-image: url(../images/button-minus.png);
 }
 
 #button-plus {
   float: right;
-  background-image: url(/images/button-plus.png);
+  background-image: url(../images/button-plus.png);
 }
-
