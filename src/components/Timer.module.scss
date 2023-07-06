@@ -1,0 +1,116 @@
+.timer {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+.container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.time {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5vh;
+}
+
+.minutes,
+.seconds {
+  display: block;
+  font-size: 25vh;
+  line-height: 1;
+  letter-spacing: -0.5vh;
+}
+
+.colon {
+  display: block;
+  position: relative;
+  width: 2.5vh;
+  height: 12.5vh;
+
+  &::before,
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    width: 2.5vh;
+    height: 2.5vh;
+    background-color: currentColor;
+    border-radius: 100%;
+  }
+
+  &::before {
+    top: 2.5vh;
+  }
+
+  &::after {
+    bottom: 0;
+  }
+}
+
+.button {
+  color: inherit;
+  text-decoration: none;
+  appearance: none;
+  background: none;
+  border: none;
+  border-radius: 0;
+  font-family: inherit;
+  margin: 0;
+  box-sizing: border-box;
+  position: relative;
+  display: inline-flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  font-size: 2rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-align: center;
+  text-overflow: ellipsis;
+  vertical-align: text-bottom;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: block;
+    background-color: transparent;
+    pointer-events: none;
+    transition: background-color 0.2s ease;
+  }
+
+  &:focus::after,
+  &:hover::after,
+  &:active::after {
+    background-color: rgba(#000, 0.12);
+  }
+
+  &:focus {
+    outline: 0.125rem solid currentColor;
+    outline-offset: 0.1rem;
+  }
+
+  &:disabled {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
